@@ -1,0 +1,62 @@
+<!-- <p>table-reservation works!</p> -->
+
+<div class="reservation-box">
+  <div class="top">
+    <div class="static">
+      <div class="input-container" id="date-picker-container">
+        <label for="date-from">check-in</label>
+        <input type="datetime-local" id="date-checkin" class="date-field" name="date-from" (change)="onchange()" >
+      
+      </div>
+    </div>
+    <div class="flex">
+      <div class="input-container" id="date-picker-container">
+        <label for="date-from">check-out</label>
+        <input type="datetime-local" id="date-checkout" class="date-field" name="" (change)="onchange()" >
+    </div>
+    <div class="button-container">
+        <span class="button ok" (click)="getData()">availability</span>
+      </div>
+    </div>
+  </div>
+  <div class="bottom" *ngIf="tableData" >
+    <div class="card-category-2">
+            
+        <span class="category-name">Available Tables</span> <br/><br/>
+        
+        <ul>
+            <li *ngFor="let item of tableData">
+                <div class="img-card iCard-style1">
+                    <div class="card-content">
+                        <div class="card-image">
+                            <span class="card-title">{{ item.tableName }}</span>
+                            <img src="../../assets/back4.jpg"/>
+                        </div>
+                        
+                        <div class="card-text">
+                            <h5>No. of Peaople :- {{item.noOfPeople}}</h5>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="card-link">
+                        <button class="button-89"(click)="submit(item)">Book Table</button>
+                    </div>
+                </div>                    
+            </li>
+            
+            
+        </ul>
+
+    </div>
+    
+    <br/>
+    
+  </div>
+</div>
+
+<!-- <div class="test" title="Toggle reservation box size small/normal" (click)="toggleReservationBoxSize()">
+  <svg xmlns="http://www.w3.org/2000/svg" width="36" height="16" viewBox="0 0 36 14">
+    <rect id="switch" data-name="switch" width="36" height="14" rx="7"/>
+  </svg>
+</div> -->

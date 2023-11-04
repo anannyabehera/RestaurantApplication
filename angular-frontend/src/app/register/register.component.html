@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>unsubscribe Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="limiter">
+        <div class="container-login100">
+          <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+              <span class="login100-form-title p-b-33">
+                Register
+              </span>
+      
+              <div class="wrap-input100">
+                <label for="name">Name:</label>
+                <input formControlName="name" class="input100" type="text" id="name" name="name" placeholder="Enter Name" autocomplete="off">
+                <span class="focus-input100-1"></span>
+                <span class="focus-input100-2"></span>
+              </div>
+      <br><br>
+              <div class="wrap-input100">
+                <label for="mob">Mobile:</label>
+                <input formControlName="mob" class="input100" type="text" id="mob" name="mob" placeholder="Enter Mobile Number" autocomplete="off" (input)="onMobileInput($event)">
+                <span class="focus-input100-1"></span>
+                <span class="focus-input100-2"></span>
+              </div>
+              <div *ngIf="registrationForm.get('mob')?.hasError('nonInteger')" style="color: red;">Please enter only integers.</div>
+  <div *ngIf="registrationForm.get('mob')?.hasError('maxlength')" style="color: red;">Mobile number should be 10 digits or less.</div>
+
+              <div id="response-message" style="color: green;"></div>
+      
+              <div class="container-login100-form-btn m-t-20">
+                <button type="submit" class="login100-form-btn">Register</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+</body>
+</html>
